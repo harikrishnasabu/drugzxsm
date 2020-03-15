@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.pms.drugzx.ui.login.LoginVM" />
+            type="com.pms.drugzsm.ui.login.LoginVM" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

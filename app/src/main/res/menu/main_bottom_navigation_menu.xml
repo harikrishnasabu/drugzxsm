@@ -5,8 +5,8 @@
           android:title="@string/products"
     android:icon="@drawable/ic_products"/>
 
-    <item android:id="@+id/addProductFragment"
-          android:title="@string/add"
+    <item android:id="@+id/manageFragment"
+          android:title="@string/manage"
           android:icon="@drawable/ic_nav_add"
     />
 
