@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_supplier_listing.*
 /**
  * A simple [Fragment] subclass.
  */
-class SupplierListingFragment : Fragment() {
+class SupplierListingFragment : Fragment() ,View.OnClickListener{
     private var _binding:FragmentSupplierListingBinding? = null
     private lateinit var viewModel: SupplierListingVM
     private lateinit var recyclerAdapter: SupplierRecyclerAdapter
@@ -48,20 +49,24 @@ class SupplierListingFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+        view.findViewById<ImageButton>(R.id.btn_supplier_search).setOnClickListener(this)
+
         viewModel.getSuppliersList().observe(viewLifecycleOwner, Observer {
             initRecyclerView()
-            println("API"+it.toString())
-            recyclerAdapter.setProductList(it as ArrayList)
+            println("API getSuppliersList "+it.toString())
+            recyclerAdapter.setSupplierList(it as ArrayList)
 
         })
+
+
         viewModel._supplier.observe(viewLifecycleOwner, Observer {
             navController!!.navigate(
                 R.id.productListingFragment
             )
         })
-        //println("HARDCODED"+viewModel.getProducts().toString())
 
-        navController = Navigation.findNavController(view)
+
 
 
 
@@ -81,6 +86,21 @@ class SupplierListingFragment : Fragment() {
         }
     }
 
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.btn_supplier_search -> {
+                viewModel.searchSupplier(binding.edtSearch.text.toString())
+
+            }
+
+            // R.id.cancel_btn -> activity!!.onBackPressed()
+        }
+        viewModel._searchSupplier.observe(viewLifecycleOwner, Observer {
+            println("API"+it.toString())
+            recyclerAdapter.setSupplierList(it as ArrayList)
+
+        })
+    }
 
 
 }

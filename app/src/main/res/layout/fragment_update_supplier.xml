@@ -95,7 +95,7 @@
 
 
             <Button
-                android:id="@+id/btn_add_supplier"
+                android:id="@+id/btn_update_supplier"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@color/colorPrimaryDark"

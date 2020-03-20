@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object MyRetrofitBuilder {
 
-    const val BASE_URL: String = "http://d2faaa36.ngrok.io"
+    const val BASE_URL: String = "http://c4ef4f43.ngrok.io"
     //const val BASE_URL: String = "http://10.0.2.2:8762/"
     // Create Logger
     private val logger = run {

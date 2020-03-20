@@ -5,16 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pms.drugzsm.R
-import com.pms.drugzsm.datamodels.api.Products
 import com.pms.drugzsm.datamodels.api.Supplier
-import com.pms.drugzsm.ui.main.ProductListingVM
+import com.pms.drugzsm.datamodels.api.Suppliers
 import com.pms.drugzsm.ui.main.SupplierListingVM
-import kotlinx.android.synthetic.main.layout_products_list_item.view.*
 import kotlinx.android.synthetic.main.layout_supplier_list_item.view.*
 
 class SupplierRecyclerAdapter(viewModel: SupplierListingVM) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var items: ArrayList<Supplier> =ArrayList()
+    private var items: ArrayList<Suppliers> =ArrayList()
     var supplierViewModel: SupplierListingVM = viewModel
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -35,8 +33,9 @@ class SupplierRecyclerAdapter(viewModel: SupplierListingVM) :
             }
         }
     }
-    fun setProductList(suppliers:ArrayList<Supplier>){
+    fun setSupplierList(suppliers:ArrayList<Suppliers>){
         items=suppliers
+        notifyDataSetChanged()
     }
 
 
@@ -48,7 +47,7 @@ class SupplierRecyclerAdapter(viewModel: SupplierListingVM) :
     ): RecyclerView.ViewHolder(itemView){
         val supplierName=itemView.tv_supplier_name
 val cardSupplier=itemView.cv_supplier
-        fun bind(supplier: Supplier){
+        fun bind(supplier: Suppliers){
             supplierName.setText(supplier.supplierName)
 
 

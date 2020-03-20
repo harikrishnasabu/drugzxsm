@@ -37,6 +37,7 @@ class ProductsRecyclerAdapter(viewModel: ProductListingVM) :
     }
     fun setProductList(products:ArrayList<Products>){
         items=products
+        notifyDataSetChanged()
     }
 
     fun setSelectedProducts(){

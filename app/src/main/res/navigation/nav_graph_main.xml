@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/addProductFragment"
-        android:name="com.pms.drugzsm.ui.main.AddFragment"
+        android:name="com.pms.drugzsm.ui.main.AddProductFragment"
         android:label="fragment_add_product"
-        tools:layout="@layout/fragment_add" >
+        tools:layout="@layout/fragment_add_product" >
         <action
             android:id="@+id/action_addProductFragment_to_productListingFragment"
             app:destination="@id/productListingFragment" />
@@ -65,12 +65,20 @@
         android:id="@+id/manageFragment"
         android:name="com.pms.drugzsm.ui.main.ManageFragment"
         android:label="fragment_manage"
-        tools:layout="@layout/fragment_manage" />
+        tools:layout="@layout/fragment_manage" >
+        <action
+            android:id="@+id/action_manageFragment_to_supplierListingFragment"
+            app:destination="@id/updateProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addSupplierFragment"
         android:name="com.pms.drugzsm.ui.main.AddSupplierFragment"
         android:label="fragment_add_supplier"
-        tools:layout="@layout/fragment_add_supplier" />
+        tools:layout="@layout/fragment_add_supplier" >
+        <action
+            android:id="@+id/action_addSupplierFragment_to_manageFragment"
+            app:destination="@id/manageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/deleteProductFragment"
         android:name="com.pms.drugzsm.ui.main.DeleteProductFragment"
@@ -80,7 +88,11 @@
         android:id="@+id/updateProductFragment"
         android:name="com.pms.drugzsm.ui.main.UpdateProductFragment"
         android:label="fragment_update_product"
-        tools:layout="@layout/fragment_update_product" />
+        tools:layout="@layout/fragment_update_product" >
+        <action
+            android:id="@+id/action_updateProductFragment_to_manageFragment"
+            app:destination="@id/manageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/deleteSupplierFragment"
         android:name="com.pms.drugzsm.ui.main.DeleteSupplierFragment"
@@ -90,6 +102,28 @@
         android:id="@+id/updateSupplierFragment"
         android:name="com.pms.drugzsm.ui.main.UpdateSupplierFragment"
         android:label="fragment_update_supplier"
-        tools:layout="@layout/fragment_update_supplier" />
+        tools:layout="@layout/fragment_update_supplier" >
+        <action
+            android:id="@+id/action_updateSupplierFragment_to_manageFragment"
+            app:destination="@id/manageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewProductsFragment"
+        android:name="com.pms.drugzsm.ui.main.ViewProductsFragment"
+        android:label="fragment_view_products"
+        tools:layout="@layout/fragment_view_products" >
+        <action
+            android:id="@+id/action_viewProductsFragment_to_manageFragment"
+            app:destination="@id/manageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewSuppliersFragment"
+        android:name="com.pms.drugzsm.ui.main.ViewSuppliersFragment"
+        android:label="fragment_view_suppliers"
+        tools:layout="@layout/fragment_view_suppliers" >
+        <action
+            android:id="@+id/action_viewSuppliersFragment_to_manageFragment"
+            app:destination="@id/manageFragment" />
+    </fragment>
 
 </navigation>

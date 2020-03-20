@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,7 +46,7 @@ class ProductListingFragment : Fragment() ,View.OnClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getProducts()
-        //println("HARDCODED"+viewModel.getProducts().toString())
+
         viewModel._products.observe(viewLifecycleOwner, Observer {
             initRecyclerView()
                 println("API"+it.toString())
@@ -54,6 +55,7 @@ class ProductListingFragment : Fragment() ,View.OnClickListener{
         })
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.btn_proceed).setOnClickListener(this)
+        view.findViewById<ImageButton>(R.id.btn_product_search).setOnClickListener(this)
 
 
     }
@@ -81,9 +83,17 @@ recyclerAdapter.setSelectedProducts()
                     )
 
             }
+            R.id.btn_product_search ->{
+                viewModel.searchchProduct(binding.edtSearch.text.toString())
+            }
+            // R.id.cancel_btn -> activity!!.onBackPressed()
 
-           // R.id.cancel_btn -> activity!!.onBackPressed()
         }
+        viewModel._searchProduct.observe(viewLifecycleOwner, Observer {
+            println("API"+it.toString())
+            recyclerAdapter.setProductList(it as ArrayList)
+
+        })
     }
 
 }

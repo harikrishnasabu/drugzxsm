@@ -18,5 +18,6 @@
     <string name="order_summary">ORDER SUMMARY</string>
     <string name="select_supplier">Select Supplier</string>
     <string name="manage">Manage</string>
+    <string name="search_products">Search Products</string>
 </resources>
 

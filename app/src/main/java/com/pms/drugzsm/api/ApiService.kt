@@ -2,10 +2,7 @@ package com.pms.drugx.api
 
 
 import com.google.gson.annotations.SerializedName
-import com.pms.drugzsm.datamodels.api.CustomerOrder
-import com.pms.drugzsm.datamodels.api.Products
-import com.pms.drugzsm.datamodels.api.Supplier
-import com.pms.drugzsm.datamodels.api.User
+import com.pms.drugzsm.datamodels.api.*
 import retrofit2.http.*
 
 
@@ -16,12 +13,19 @@ interface ApiService {
 //        @Path("userId") userId: String
 //    ): List<Product>
 
+    @Headers("Content-Type: application/json")
+    @GET("supplier-managment-service/supplier/searchSupplierName/{sName}")
+    suspend fun searchSupplier( @Path("sName") sName:String
+    ): List<Suppliers>
 
-
+    @Headers("Content-Type: application/json")
+    @GET("product-managment-service/product/search/{pName}")
+    suspend fun searchProduct( @Path("pName") pName:String
+    ): List<Products>
 
     @GET("supplier-managment-service/supplier/allSupplier/")
     suspend fun getSuppliers(
-    ): List<Supplier>
+    ): List<Suppliers>
 
 
 
@@ -46,26 +50,26 @@ interface ApiService {
     )
     @Headers("Content-Type: application/json")
     @POST("product-managment-service/product/addproduct")
-    suspend fun addProduct(@Body products: Products
+    suspend fun addProduct(@Body product: Product
 
     )
 
     @Headers("Content-Type: application/json")
-    @POST("supplier-managment-service/supplier/updateSupplier/{supplierId}")
-    suspend fun updateSupplier(  @Path("supplierId") supplierId: String, @Body supplier:Supplier
+    @PUT("supplier-managment-service/supplier/updateSupplier/{supplierId}")
+    suspend fun updateSupplier(  @Path("supplierId") supplierId: Int, @Body supplier:Suppliers
     )
     @Headers("Content-Type: application/json")
-    @POST("product-managment-service/product/updateproduct/{productId}")
-    suspend fun updateProduct(@Path("productId") productId: String,@Body products: Products
+    @PUT("product-managment-service/product/updateproduct/{productId}")
+    suspend fun updateProduct(@Path("productId") productId: Int,@Body product: Products
 
     )
     @Headers("Content-Type: application/json")
-    @POST("supplier-managment-service/supplier/delete/{supplierId}")
-    suspend fun deleteSupplier(@Path("supplierId") supplierId: String
+    @DELETE("supplier-managment-service/supplier/delete/{supplierId}")
+    suspend fun deleteSupplier(@Path("supplierId") supplierId: Int
     )
     @Headers("Content-Type: application/json")
-    @POST("product-managment-service/product/delete/{productId}")
-    suspend fun deleteProduct(@Path("productId") productId: String
+    @DELETE("product-managment-service/product/deleteproduct/{productId}")
+    suspend fun deleteProduct(@Path("productId") productId: Int
 
     )
 

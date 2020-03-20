@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.AddFragment">
+    tools:context=".ui.main.AddProductFragment">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -33,7 +33,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/edt_product_id"
+            android:id="@+id/edt_product_des"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -43,8 +43,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:hint="Product Id"
-            android:inputType="number"
+            android:hint="Product Description"
+            android:inputType="textMultiLine"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="10dp" />
 
@@ -119,11 +119,11 @@
             android:layout_marginBottom="20dp" />
 
         <EditText
-            android:id="@+id/edt_supplier_id"
+            android:id="@+id/edt_seller_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Supplier Id"
+            android:hint="Seller Id"
             android:inputType="number"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
