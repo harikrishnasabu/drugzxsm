@@ -27,7 +27,9 @@ class LoginVM: ViewModel() {
         }
         _login.value = update
     }
-
+    fun getUser():User{
+        return MainRepository._user
+    }
     fun cancelJobs(){
         MainRepository.cancelJobs()
     }

@@ -39,10 +39,10 @@ class OrderSummaryFragment : Fragment(),View.OnClickListener {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getOrderDetails().observe(viewLifecycleOwner, Observer {
-_binding?.tvCustNameValue?.text =it.customerName
-            _binding?.tvItemCountValue ?.text =""
-        })
+//        viewModel.getOrderDetails().observe(viewLifecycleOwner, Observer {
+//_binding?.tvCustNameValue?.text =it.customerName
+//            _binding?.tvItemCountValue ?.text =""
+//        })
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.btn_place_order).setOnClickListener(this)
     }

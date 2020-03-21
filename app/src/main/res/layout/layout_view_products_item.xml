@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="10dp"
-    app:cardCornerRadius="2dp"
+    app:cardElevation="15dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="10dp"
     app:cardPreventCornerOverlap="false"
     >
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                android:layout_weight="1"
+                android:padding="2dp"
+                android:textColor="@android:color/black"
                 android:text="Product ID" />
 
     <TextView
@@ -41,6 +45,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:padding="2dp"
+        android:textColor="@android:color/black"
        />
 </LinearLayout>
 
@@ -51,7 +57,9 @@
             <TextView
                 android:id="@+id/tv_product_name"
                 android:layout_width="match_parent"
+                android:textColor="@android:color/black"
                 android:layout_height="wrap_content"
+                android:padding="2dp"
                 android:layout_weight="1"
                 android:text="Product Name" />
 
@@ -59,6 +67,8 @@
             android:id="@+id/tv_product_name_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:textColor="@android:color/black"
             android:layout_weight="1"/>
     </LinearLayout>
             <LinearLayout
@@ -70,11 +80,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:text="Description" />
                 <TextView
                     android:id="@+id/tv_product_description_value"
                     android:layout_width="match_parent"
+                    android:textColor="@android:color/black"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
                     android:layout_weight="1"
                      />
             </LinearLayout>
@@ -86,12 +100,16 @@
                     android:id="@+id/tv_product_selling_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     android:text="Selling price" />
                 <TextView
                     android:id="@+id/tv_product_selling_price_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -104,11 +122,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:text="Cost price" />
                 <TextView
                     android:id="@+id/tv_product_cost_price_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -122,11 +144,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:text="Manufacture Date" />
                 <TextView
                     android:id="@+id/tv_product_manu_date_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -135,15 +161,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-
+                    android:textColor="@android:color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="2dp"
                     android:text="Expiry Date" />
                 <TextView
                     android:id="@+id/tv_product_expiry_date_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -156,11 +185,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:text="Seller Id" />
                 <TextView
                     android:id="@+id/tv_seller_id_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -170,20 +203,25 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.0"
+                    android:layout_weight="1"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:text="Quantity:" />
 
                 <TextView
                     android:id="@+id/product_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
                 <Button
@@ -191,6 +229,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:textColor="@android:color/white"
+                    android:background="@color/colorPrimary"
                     android:text="Update" />
 
                 <Button
@@ -198,6 +240,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:textColor="@android:color/white"
+                    android:background="@color/colorPrimary"
                     android:text="Delete"/>
             </LinearLayout>
         </LinearLayout>

@@ -5,17 +5,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.SelectedProductsFragment">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/darkblue"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_selected_products"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="120dp"
-                android:paddingBottom="60dp"
+                android:background="@color/darkblue"
+                android:layout_above="@+id/btn_order"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -29,13 +30,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="60dp"
-                android:backgroundTint="@color/colorPrimaryDark"
+                android:backgroundTint="@color/colorPrimary"
                 android:text="Order"
+                android:layout_alignParentBottom="true"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_products" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
     </FrameLayout>

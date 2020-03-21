@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.pms.drugzsm.ui.main.ManageFragment">
 
     <FrameLayout
@@ -15,7 +16,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
-            android:background="#fcfcfc"
+            android:background="@color/darkblue"
             android:gravity="center"
             android:id="@+id/ll">
             <LinearLayout
@@ -29,24 +30,30 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_width="120dp"
+                    app:cardCornerRadius="10dp"
                     android:layout_height="140dp"
                     android:layout_margin="10dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:weightSum="5"
+                        android:background="@android:color/holo_red_dark"
                         android:gravity="center">
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@color/cardview_light_background"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
                             android:src="@drawable/ic_add_product"
+                            android:tint="#FFFF00"
+                            android:layout_weight="1"
                             android:padding="5dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
-                            android:layout_marginTop="5dp"
+                            android:layout_weight="0"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white"
                             android:text="Add Product"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -61,18 +68,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:weightSum="5"
+                        android:background="@android:color/holo_red_dark"
                         android:gravity="center">
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@color/cardview_light_background"
                             android:src="@drawable/ic_nav_add"
+                            android:tint="@android:color/holo_blue_bright"
+                            android:layout_weight="1"
                             android:padding="10dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
+                           android:layout_gravity="center"
+                            android:layout_weight="0"
                             android:text="Add Supplier"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -95,19 +107,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:background="@android:color/holo_red_dark"
+                        android:weightSum="5"
                         android:gravity="center">
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@color/cardview_light_background"
                             android:src="@drawable/ic_update_product"
+                            android:tint="@android:color/holo_green_light"
+                            android:layout_weight="1"
                             android:padding="10dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
-                            android:text="View/Edit Product"/>
+                            android:layout_weight="0"
+                            android:textColor="@android:color/white"
+                            android:layout_gravity="center"
+                            android:text="Manage Product"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -121,18 +138,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:weightSum="5"
+                        android:background="@android:color/holo_red_dark"
                         android:orientation="vertical">
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@color/cardview_light_background"
                             android:padding="10dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:tint="@color/colorAccent"
                             android:src="@drawable/ic_update_supplier" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="View/Edit Supplier"
+                            android:layout_weight="0"
+                            android:textColor="@android:color/white"
+                            android:gravity="bottom"
+                            android:text="Manage Supplier"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

@@ -22,7 +22,7 @@ class DateUtils {
         }
 
         fun convertLongToStringDate(longDate: Long): String{
-            val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH)
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
             try {
                 val date = sdf.format(Date(longDate))
                 return date

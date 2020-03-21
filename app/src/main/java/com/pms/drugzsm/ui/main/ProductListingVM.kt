@@ -3,9 +3,12 @@ package com.pms.drugzsm.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.pms.drugzsm.datamodels.api.OrderProduct
 import com.pms.drugzsm.datamodels.api.Products
+import com.pms.drugzsm.datamodels.api.SupplierOrder
 import com.pms.drugzsm.datamodels.api.Suppliers
 import com.pms.drugzsm.repo.MainRepository
+import com.pms.drugzsm.utils.DateUtils
 import com.pms.drugzsm.utils.InjectorUtils
 
 class ProductListingVM : ViewModel() {
@@ -30,5 +33,15 @@ MainRepository._selectedProducts=selectedProducts
     fun searchchProduct(search: String) {
 
         _searchProduct= MainRepository.searchProducts(search)
+    }
+
+    fun placeOrder(){
+        val orderProducts: ArrayList<OrderProduct> = ArrayList()
+        MainRepository._selectedProducts.forEach {
+            orderProducts.add(OrderProduct(it.pId,it.pQuantity))
+        }
+val supplierOrder = SupplierOrder(DateUtils.convertLongToStringDate(System.currentTimeMillis()),orderProducts,"Paid",MainRepository._selectedSupplier.supplierId)
+        MainRepository.sendOrder(supplierOrder)
+        println("supplierOrder "+supplierOrder.toString())
     }
 }

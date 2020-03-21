@@ -13,13 +13,14 @@ import kotlinx.coroutines.Dispatchers.Main
 object MainRepository {
 
     var job: CompletableJob? = null
+    lateinit var _user:User
 lateinit var _selectedProducts:List<Products>
     lateinit var _selectedSupplier:Suppliers
     lateinit var _allProducts:List<Products>
     lateinit var _allSuppliers:List<Suppliers>
     var _updateProduct:MutableLiveData<Products> = MutableLiveData()
     var _updateSupplier:MutableLiveData<Suppliers> = MutableLiveData()
-     var _customerOrder:MutableLiveData<CustomerOrder> = MutableLiveData()
+
 
     fun getProducts(): LiveData<List<Products>>{
         job = Job()
@@ -28,7 +29,7 @@ lateinit var _selectedProducts:List<Products>
                 super.onActive()
                 job?.let{ theJob ->
                     CoroutineScope(IO + theJob).launch {
-                        _allProducts = MyRetrofitBuilder.apiService.getProducts()
+                        _allProducts = MyRetrofitBuilder.apiService.getProducts(_user.token)
                         withContext(Main){
                             value = _allProducts
                             println("PRODUCT"+value)
@@ -48,7 +49,7 @@ lateinit var _selectedProducts:List<Products>
                 super.onActive()
                 job?.let{ theJob ->
                     CoroutineScope(IO + theJob).launch {
-                        val list = MyRetrofitBuilder.apiService.searchProduct(search)
+                        val list = MyRetrofitBuilder.apiService.searchProduct(search,_user.token)
                         withContext(Main){
                             value = list
                             println("SEARCH"+value)
@@ -69,7 +70,7 @@ lateinit var _selectedProducts:List<Products>
                 super.onActive()
                 job?.let{ theJob ->
                     CoroutineScope(IO + theJob).launch {
-                        val user = MyRetrofitBuilder.apiService.getUser(ApiService.LoginPostData(login.userName,login.password))
+                        _user = MyRetrofitBuilder.apiService.getUser(ApiService.LoginPostData(login.userName,login.password))
 //                        user.enqueue(object: Callback<User> {
 //
 //
@@ -89,7 +90,7 @@ lateinit var _selectedProducts:List<Products>
 //
 //                        })
                         withContext(Main){
-                            value = user
+                            value = _user
                           //  println("USER"+value)
                             theJob.complete()
                         }
@@ -100,16 +101,16 @@ lateinit var _selectedProducts:List<Products>
             }
         }
     }
-    fun sendOrder(customerOrder: CustomerOrder){
+    fun sendOrder(supplierOrder:SupplierOrder){
         job = Job()
-        _customerOrder.value=customerOrder
+
 
                 job?.let{ theJob ->
                     CoroutineScope(IO + theJob).launch {
-                        val addCustomer = MyRetrofitBuilder.apiService.postOrder(_customerOrder.value!!)
+                        val supplierOrders = MyRetrofitBuilder.apiService.postOrder(supplierOrder,_user.token)
                         withContext(Main){
 
-                            println("customerOrder"+addCustomer)
+                            println("customerOrder"+supplierOrders)
                             theJob.complete()
                         }
                     }
@@ -124,7 +125,7 @@ lateinit var _selectedProducts:List<Products>
                 super.onActive()
                 job?.let{ theJob ->
                     CoroutineScope(IO + theJob).launch {
-                        _allSuppliers = MyRetrofitBuilder.apiService.getSuppliers()
+                        _allSuppliers = MyRetrofitBuilder.apiService.getSuppliers(_user.token)
                         withContext(Main){
                             value = _allSuppliers
                             println("PRODUCT"+value)
@@ -147,7 +148,7 @@ lateinit var _selectedProducts:List<Products>
 
         job?.let{ theJob ->
             CoroutineScope(IO + theJob).launch {
-                val addCustomer = MyRetrofitBuilder.apiService.addProduct(product = product)
+                val addCustomer = MyRetrofitBuilder.apiService.addProduct(product = product,token = _user.token)
                 withContext(Main){
                     addCustomer.toString()
                     theJob.complete()
@@ -163,7 +164,7 @@ lateinit var _selectedProducts:List<Products>
 
         job?.let{ theJob ->
             CoroutineScope(IO + theJob).launch {
-                val supplier = MyRetrofitBuilder.apiService.addSupplier(supplier = supplier)
+                val supplier = MyRetrofitBuilder.apiService.addSupplier(supplier = supplier,token = _user.token)
                 withContext(Main){
                     supplier.toString()
                     theJob.complete()
@@ -180,7 +181,7 @@ lateinit var _selectedProducts:List<Products>
 
         job?.let{ theJob ->
             CoroutineScope(IO + theJob).launch {
-                val updateProduct = MyRetrofitBuilder.apiService.updateProduct(productId = pId,product = product)
+                val updateProduct = MyRetrofitBuilder.apiService.updateProduct(productId = pId,product = product,token = _user.token)
                 withContext(Main){
                     updateProduct.toString()
                     theJob.complete()
@@ -200,7 +201,7 @@ lateinit var _selectedProducts:List<Products>
 
         job?.let{ theJob ->
             CoroutineScope(IO + theJob).launch {
-                val updateSupplier = MyRetrofitBuilder.apiService.updateSupplier(supplierId = supplierId,supplier = supplier)
+                val updateSupplier = MyRetrofitBuilder.apiService.updateSupplier(supplierId = supplierId,supplier = supplier,token = _user.token)
                 withContext(Main){
                     updateSupplier.toString()
                     theJob.complete()
@@ -218,7 +219,7 @@ lateinit var _selectedProducts:List<Products>
 
        job?.let{ theJob ->
            CoroutineScope(IO + theJob).launch {
-               val updateSupplier = MyRetrofitBuilder.apiService.deleteProduct(id)
+               val updateSupplier = MyRetrofitBuilder.apiService.deleteProduct(id,_user.token)
                withContext(Main){
                    updateSupplier.toString()
                    theJob.complete()
@@ -234,7 +235,7 @@ lateinit var _selectedProducts:List<Products>
 
         job?.let{ theJob ->
             CoroutineScope(IO + theJob).launch {
-                val updateSupplier = MyRetrofitBuilder.apiService.deleteSupplier(id)
+                val updateSupplier = MyRetrofitBuilder.apiService.deleteSupplier(id,_user.token)
                 withContext(Main){
                     updateSupplier.toString()
                     theJob.complete()
@@ -256,7 +257,7 @@ lateinit var _selectedProducts:List<Products>
 
                 job?.let{ theJob ->
                     CoroutineScope(IO + theJob).launch {
-                      val list = MyRetrofitBuilder.apiService.searchSupplier(sName = search) as ArrayList<Suppliers>
+                      val list = MyRetrofitBuilder.apiService.searchSupplier(sName = search,token = _user.token) as ArrayList<Suppliers>
                         withContext(Main){
                             value=list
                             theJob.complete()

@@ -77,6 +77,7 @@ class SelectedProductsFragment : Fragment() ,View.OnClickListener {
     override fun onClick(v: View?) {
 
 recyclerAdapter.setSelectedProducts()
+        viewModel.placeOrder()
 
         navController!!.navigate(
             R.id.orderSummaryFragment

@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/search_products"
+            android:padding="15dp"
             android:layout_weight="1"
             />
         <ImageButton
@@ -53,9 +54,11 @@
         <Button
             android:id="@+id/btn_proceed"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:text="Proceed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

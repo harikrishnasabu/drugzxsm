@@ -7,7 +7,7 @@ import com.pms.drugzsm.repo.MainRepository
 
 class OrderSummaryVM: ViewModel()  {
     private val _summary: MutableLiveData<Order> = MutableLiveData()
-    fun getOrderDetails()=MainRepository._customerOrder
+  //  fun getOrderDetails()=MainRepository._customerOrder
 
 
 
